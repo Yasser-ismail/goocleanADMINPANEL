@@ -1,0 +1,19 @@
+@can('delete', $single_lower_case)
+    <a href='{{route('dashboard.plural_lower_case.destroy',$single_lower_case->id)}}'
+       data-method='delete'
+       data-trans-button-cancel=" @lang('plural_lower_case.dialogs.delete.cancel') "
+       data-trans-button-confirm=" @lang('plural_lower_case.dialogs.delete.confirm') "
+       data-trans-title=" @lang('plural_lower_case.dialogs.delete.info') "
+       class='btn btn-danger btn-sm'>
+
+        <i class='fas fa-trash' data-toggle='tooltip'
+           data-placement='top'
+           title=" @lang('plural_lower_case.dialogs.delete.title') "></i>
+
+    </a>
+@endcan
+
+
+
+
+

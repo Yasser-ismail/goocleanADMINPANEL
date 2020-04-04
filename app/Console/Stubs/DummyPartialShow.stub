@@ -1,0 +1,5 @@
+@can('view', $single_lower_case)
+    <a href="{{ route('dashboard.plural_lower_case.show', $single_lower_case) }}" class="btn btn-success btn-sm">
+        <i class="fas fa-eye"></i>
+    </a>
+@endcan

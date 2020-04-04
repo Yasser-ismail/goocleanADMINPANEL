@@ -1,0 +1,124 @@
+<?php
+
+namespace App\Http\Controllers\Dashboard;
+
+use App\Models\model_name;
+use Illuminate\Http\Request;
+use App\Http\Filters\model_nameFilter;
+use App\Http\Requests\model_nameRequest;
+use App\Http\Controllers\Controller;
+
+class model_nameController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @param \App\Http\Filters\model_nameFilter $filter
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function index(model_nameFilter $filter)
+    {
+        $this->authorize('viewAny', model_name::class);
+
+        $plural_lower_case = model_name::filter($filter)->latest()->paginate();
+
+        return view('dashboard.plural_lower_case.index', compact('plural_lower_case'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function create()
+    {
+        $this->authorize('create', model_name::class);
+
+        return view('dashboard.plural_lower_case.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \App\Http\Requests\model_nameRequest $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function store(model_nameRequest $request)
+    {
+        $this->authorize('create', model_name::class);
+
+        model_name::create($request->all());
+
+        flash(trans('plural_lower_case.messages.created'));
+
+        return redirect()->route('dashboard.plural_lower_case.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\model_name $single_lower_case
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show(model_name $single_lower_case)
+    {
+        $this->authorize('view', $single_lower_case);
+
+        return view('dashboard.plural_lower_case.show', compact('single_lower_case'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param \App\Models\model_name $single_lower_case
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function edit(model_name $single_lower_case)
+    {
+        $this->authorize('update', $single_lower_case);
+
+        return view('dashboard.plural_lower_case.edit', compact('single_lower_case'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\model_name $single_lower_case
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update(model_nameRequest $request, model_name $single_lower_case)
+    {
+        $this->authorize('update', $single_lower_case);
+
+        $single_lower_case->update($request->all());
+
+        flash(trans('plural_lower_case.messages.updated'));
+
+        return redirect()->route('dashboard.plural_lower_case.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\model_name $single_lower_case
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(model_name $single_lower_case)
+    {
+        $this->authorize('delete', $single_lower_case);
+
+        $single_lower_case->delete();
+
+        flash(trans('plural_lower_case.messages.deleted'));
+
+        return redirect()->route('dashboard.plural_lower_case.index');
+    }
+}

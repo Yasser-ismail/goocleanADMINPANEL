@@ -1,0 +1,316 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "weninqatar",
+        "description": "weninqatar",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "categories list",
+                "description": "categories list",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/cities": {
+            "get": {
+                "tags": [
+                    "cities"
+                ],
+                "summary": "cities list",
+                "description": "cities list",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/edit-user-data": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "edit user data",
+                "description": "edit user data (set header accept as application/json)",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "image",
+                        "in": "path",
+                        "description": "image",
+                        "required": false,
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "query",
+                        "description": "phone_number",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city_id",
+                        "in": "query",
+                        "description": "city_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "bearer token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2_security_example": [
+                            "write:projects",
+                            "read:projects"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/feedback": {
+            "post": {
+                "tags": [
+                    "feedback"
+                ],
+                "summary": "send new feedback",
+                "description": "send new feedback (set header accept as application/json)",
+                "parameters": [
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "message",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "subject",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name (required only if user not authenticate)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "query",
+                        "description": "phone_number (required only if user not authenticate)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2_security_example": [
+                            "write:projects",
+                            "read:projects"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "user login",
+                "description": "user login (set header accept as application/json)",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2_security_example": [
+                            "write:projects",
+                            "read:projects"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "user register",
+                "description": "user register (set header accept as application/json)",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "oauth2_security_example": [
+                            "write:projects",
+                            "read:projects"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/settings": {
+            "get": {
+                "tags": [
+                    "settings"
+                ],
+                "summary": "settings list",
+                "description": "settings list",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Password Based": {
+                "type": "oauth2",
+                "description": "Use a global client_id / client_secret and your username / password combo to obtain a token",
+                "in": "header",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "/oauth/authorize",
+                        "tokenUrl": "/oauth/token",
+                        "refreshUrl": "/oauth/token/refresh",
+                        "scopes": []
+                    }
+                },
+                "scheme": "https"
+            }
+        }
+    }
+}

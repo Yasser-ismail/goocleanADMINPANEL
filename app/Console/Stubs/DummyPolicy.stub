@@ -1,0 +1,94 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\User;
+use App\Models\model_name;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class model_namePolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view any plural_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @return mixed
+     */
+    public function viewAny(User $user)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+
+    /**
+     * Determine whether the user can view the single_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @param \App\Models\model_name $single_lower_case
+     * @return mixed
+     */
+    public function view(User $user, model_name $single_lower_case)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+
+    /**
+     * Determine whether the user can create plural_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @return mixed
+     */
+    public function create(User $user)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+
+    /**
+     * Determine whether the user can update the single_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @param \App\Models\model_name $single_lower_case
+     * @return mixed
+     */
+    public function update(User $user, model_name $single_lower_case)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+
+    /**
+     * Determine whether the user can delete the single_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @param \App\Models\model_name $single_lower_case
+     * @return mixed
+     */
+    public function delete(User $user, model_name $single_lower_case)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+
+    /**
+     * Determine whether the user can restore the single_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @param \App\Models\model_name $single_lower_case
+     * @return mixed
+     */
+    public function restore(User $user, model_name $single_lower_case)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+
+    /**
+     * Determine whether the user can permanently delete the single_lower_case.
+     *
+     * @param  \App\Models\User $user
+     * @param \App\Models\model_name $single_lower_case
+     * @return mixed
+     */
+    public function forceDelete(User $user, model_name $single_lower_case)
+    {
+        return $user->type == User::ADMIN_TYPE;
+    }
+}

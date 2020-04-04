@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Models\Scopes;
+
+use App\Models\model_name;
+
+trait model_nameScopes
+{
+
+}

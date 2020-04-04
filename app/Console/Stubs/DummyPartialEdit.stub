@@ -1,0 +1,5 @@
+@can('update', $single_lower_case)
+    <a href="{{ route('dashboard.plural_lower_case.edit', $single_lower_case) }}" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit"></i>
+    </a>
+@endcan

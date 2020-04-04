@@ -1,0 +1,21 @@
+<?php
+
+Breadcrumbs::for('dashboard.plural_lower_case.index', function ($trail) {
+    $trail->parent('dashboard.home');
+    $trail->push(__('plural_lower_case.plural'), route('dashboard.plural_lower_case.index'));
+});
+
+Breadcrumbs::for('dashboard.plural_lower_case.create', function ($trail) {
+    $trail->parent('dashboard.plural_lower_case.index');
+    $trail->push(__('plural_lower_case.actions.create'), route('dashboard.plural_lower_case.create'));
+});
+
+Breadcrumbs::for('dashboard.plural_lower_case.edit', function ($trail) {
+    $trail->parent('dashboard.plural_lower_case.index');
+    $trail->push(__('plural_lower_case.actions.edit'), route('dashboard.plural_lower_case.edit', request()->route('single_lower_case')));
+});
+
+Breadcrumbs::for('dashboard.plural_lower_case.show', function ($trail) {
+    $trail->parent('dashboard.plural_lower_case.index');
+    $trail->push(__('plural_lower_case.actions.show'), route('dashboard.plural_lower_case.show', request()->route('single_lower_case')));
+});

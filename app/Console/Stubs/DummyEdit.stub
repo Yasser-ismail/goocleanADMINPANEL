@@ -1,0 +1,61 @@
+@extends('layouts.backend')
+
+@section('title')
+    @lang('plural_lower_case.actions.list') | @lang('plural_lower_case.actions.edit')
+@endsection
+
+@section('content')
+
+    {{ html()->form('POST', route('dashboard.plural_lower_case.update',$single_lower_case))->class('form-horizontal')->acceptsFiles()->open() }}
+
+    @method('PUT')
+
+    <div class="card my-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4 class="card-title mb-0">
+                        @lang('plural_lower_case.actions.list')
+                        <small class="text-muted">@lang('plural_lower_case.actions.edit')</small>
+                    </h4>
+                </div><!--col-->
+            </div><!--row-->
+        </div>
+        <div class="card-body">
+
+            <div class="row mt-4 mb-4">
+                <div class="col">
+
+                    <div class="form-group row">
+                        {{ html()->label(trans('plural_lower_case.attributes.name'))->class('col-md-2 form-control-label')->for('name') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text('name')
+                                ->class('form-control')
+                                ->placeholder(trans('plural_lower_case.attributes.name'))
+                                ->attribute('maxlength', 191)
+                                ->value($single_lower_case->name)
+                                ->required()
+                                }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+
+                </div><!--col-->
+            </div><!--row-->
+        </div><!--card-body-->
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col">
+                    {{ form_cancel(route('dashboard.plural_lower_case.index'), trans('plural_lower_case.actions.cancel')) }}
+                </div><!--col-->
+
+                <div class="col text-right">
+                    {{ form_submit(trans('plural_lower_case.actions.save')) }}
+                </div><!--col-->
+            </div><!--row-->
+        </div>
+    </div>
+    {{ html()->form()->close() }}
+
+@endsection
